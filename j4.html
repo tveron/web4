@@ -1,0 +1,74 @@
+<!DOCTYPE html> 
+<html> 
+  <head> 
+    <meta charset="utf-8"> 
+    <table id="table"></table> 
+    <script> 
+      function getRandomInt(min,max) { 
+        var min = document.getElementById('min').value; 
+        var max = document.getElementById('max').value; 
+        var r = min - 0.5 + Math.random() * (max - min ) 
+        r = Math.round(r); 
+        console.log(r); 
+        return r; 
+      } 
+      function getArray(x){ 
+        var x = document.getElementById('x').value; 
+        var s=[]; 
+        if (x<=0){ 
+          console.log('неккоретные входные') 
+          return 
+        } 
+        for (var i = 0; i < x; i++){ 
+          s[i]=getRandomInt(min,max); 
+        } 
+      } 
+      function getResultArray(x){ 
+        var table= document.querySelector('#table'); 
+        var x = document.getElementById('x').value; 
+        var f=[],matrix=[]; 
+        if (x<=0) { 
+          console.log('неккоретные входные') 
+          return 
+        } 
+        for (var i = 0; i < x*x; i++){ 
+          f.push(getRandomInt(min,max)); 
+        } 
+        f.sort((f, s) => f - s); 
+        console.log(f); 
+        for (var i = 0; i < x; i++){ 
+          matrix[i]=[]; 
+          for (var j = 0; j < x; j++){ 
+            if (i%2==1){ 
+              matrix[i][j]=f[x*x-1-i*3-j] 
+            } 
+            if (i%2==0){ 
+              matrix[i][j]=f[x*x-1-i*3-x+1+j] 
+            } 
+          } 
+        } 
+        for (var i = 0; i < x; i++){ 
+          var tr= document.createElement('tr'); 
+          for (var j = 0; j < x; j++){ 
+            var td= document.createElement('td'); 
+            td.innerHTML= matrix[i][j]; 
+            tr.appendChild(td); 
+          } 
+          table.appendChild(tr); 
+        } 
+        console.log(matrix) 
+        return matrix 
+      } 
+    </script> 
+  </head> 
+  <body> 
+    <form> 
+      min:<input id="min" type="number"><br> 
+      max :<input id="max" type="number"><br> 
+    </form>  
+    <form> 
+      x:<input id="x" type="number"><br> 
+    </form> 
+    <button onClick="getResultArray()">array</button> 
+  </body> 
+</html>

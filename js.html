@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+		function sqr(){
+			var a = document.getElementById('a').value;
+			var h = document.getElementById('h').value;
+			if ((h <= 0) || (a <= 0)) {
+				console.log('Неправильно введенные элементы');
+				document.getElementById("result").innerHTML = ('Неправильно введенные элементы');
+			}
+			else { 
+				console.log(a*h);
+				document.getElementById("result").innerHTML = 'sqr= ' + (a * h);
+			}
+		}
+	</script>
+	<title></title>
+</head>
+<body>
+	<form>
+		длина основания:<input id="a" type="number"><br><br>
+		высота:<input id="h" type="number"><br>
+		<output id="result"></output>
+	</form >
+	<button onClick="sqr()">Вычислить площадь</button>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+		function count(){
+			var x = document.getElementById('x').value;
+			var s = 1;
+			var sum = 0;
+			var n = 1;
+			if (x < 0.005){
+				document.getElementById("result").innerHTML = ("ошибка");
+			}
+			else if ((x >=  0.005)&&(x < 1)) { 
+				while (s >= 0.005){
+					s = (Math.pow(x, n) / n);
+					if (s >= 0.005){
+						sum = sum+s;}
+					n = n + 2;
+				}
+					console.log(sum);
+					document.getElementById("result").innerHTML = (sum);
+			}
+		}
+
+	</script>
+		</head>
+		<body>
+			<form>
+				введите Х:<input id="x" type="number"><br><br>
+				сумма:<output id="result"></output>
+			</form>
+			<button onClick="count()">Вычислить</button>
+		</body>
+		</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
